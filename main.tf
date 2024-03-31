@@ -67,6 +67,7 @@ module "blog_alb" {
       port             = 80
       target_type      = "instance"
       # target_id        = module.blog_autoscaling.autoscaling_group_arn
+      create_attachment = false
     }
   }
 
