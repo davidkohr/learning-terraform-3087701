@@ -47,6 +47,7 @@ resource "aws_instance" "blog" {
 
 module "blog_alb" {
   source = "terraform-aws-modules/alb/aws"
+  version = "9.8.0"
 
   name    = "blog-alb"
   vpc_id  = module.blog_vpc.vpc_id
@@ -61,6 +62,7 @@ module "blog_alb" {
       protocol         = "HTTP"
       port             = 80
       target_type      = "instance"
+      target_id        = aws_instance.blog.id
     }
   }
 
